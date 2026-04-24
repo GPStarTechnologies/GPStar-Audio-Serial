@@ -546,16 +546,21 @@ void gpstarAudio::trackPlayPoly(uint16_t trk, bool lock) {
 }
 
 void gpstarAudio::trackPlayPoly(uint16_t trk, bool lock, uint16_t i_trk_start_delay) {
-  CommandData cmd {};
-  cmd.buf = 11;
-  cmd.trk = trk;
-  cmd.cmd = GPCMD_TRACK_CONTROL_CACHE;
-  cmd.code = GPTRACK_PLAY_POLY;
-  cmd.lock = lock;
-  cmd.useDelay1 = true;
-  cmd.trk1_start_time = i_trk_start_delay;
+  if(i_trk_start_delay < 1) {
+    trackPlayPoly(trk, lock);
+  }
+  else {
+    CommandData cmd {};
+    cmd.buf = 11;
+    cmd.trk = trk;
+    cmd.cmd = GPCMD_TRACK_CONTROL_CACHE;
+    cmd.code = GPTRACK_PLAY_POLY;
+    cmd.lock = lock;
+    cmd.useDelay1 = true;
+    cmd.trk1_start_time = i_trk_start_delay;
 
-  gpBuildCommand(cmd);
+    gpBuildCommand(cmd);
+  }
 }
 
 void gpstarAudio::trackPlayPoly(uint16_t trk, bool lock, uint16_t i_trk_start_delay, uint16_t trk2, bool loop_trk2, uint16_t trk2_start_time) {
