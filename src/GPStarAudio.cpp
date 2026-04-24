@@ -251,7 +251,12 @@ void gpstarAudio::gpBuildCommand(const CommandData& cmd) {
         break;
 
         case 7:
-          txbuf[i] = cmd.lock;
+          if(cmd.useRapid) {
+            txbuf[i] = (uint8_t)cmd.rapid_time;
+          }
+          else {
+            txbuf[i] = cmd.lock;
+          }
         break;
 
         case 8:
@@ -259,16 +264,13 @@ void gpstarAudio::gpBuildCommand(const CommandData& cmd) {
             txbuf[i] = (uint8_t)cmd.trk2;
           }
           else if(cmd.useRapid) {
-            txbuf[i] = (uint8_t)cmd.rapid_time;
+            txbuf[i] = (uint8_t)(cmd.rapid_time >> 8);
           }
         break;
 
         case 9:
           if(cmd.useTrack2) {
             txbuf[i] = (uint8_t)(cmd.trk2 >> 8);
-          }
-          else if(cmd.useRapid) {
-            txbuf[i] = (uint8_t)(cmd.rapid_time >> 8);
           }
         break;
 
