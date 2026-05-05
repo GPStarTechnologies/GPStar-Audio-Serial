@@ -72,8 +72,8 @@
 #define GPSTAR_HELLO_LEN          9
 
 // ---- Protocol ----
-#define GP_S1                     0xf0
-#define GP_S2                     0xaa
+#define GP_S1                     0xF0
+#define GP_S2                     0xAA
 #define GP_EM                     0x55
 
 struct CommandData {

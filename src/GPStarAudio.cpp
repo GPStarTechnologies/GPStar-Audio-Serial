@@ -209,7 +209,7 @@ void gpstarAudio::gpBuildCommand(const CommandData& cmd) {
   uint8_t txbuf[cmd.buf];
   uint8_t i_tmp = 0;
 
-  for(uint8_t i = 0; i < cmd.buf -1; i++) {
+  for(uint8_t i = 0; i < cmd.buf - 1; i++) {
     // Build the header.
     if(i <= 2) {
       switch(i) {
@@ -518,6 +518,7 @@ void gpstarAudio::trackPlaySolo(uint16_t trk, bool lock, uint16_t i_trk_start_de
   cmd.lock = lock;
   cmd.useDelay1 = true;
   cmd.trk1_start_time = i_trk_start_delay;
+  cmd.useTrack2 = true;
   cmd.useDelay2 = true;
   cmd.trk2 = trk2;
   cmd.loop_trk2 = loop_trk2;
@@ -574,6 +575,7 @@ void gpstarAudio::trackPlayPoly(uint16_t trk, bool lock, uint16_t i_trk_start_de
   cmd.lock = lock;
   cmd.useDelay1 = true;
   cmd.trk1_start_time = i_trk_start_delay;
+  cmd.useTrack2 = true;
   cmd.useDelay2 = true;
   cmd.trk2 = trk2;
   cmd.loop_trk2 = loop_trk2;
