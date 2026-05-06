@@ -1,6 +1,6 @@
 {
     "name": "GPStar Audio Serial",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "A serial communication control library for the GPStar Audio and GPStar Audio XL series of audio boards from GPStar Technologies.",
     "keywords": "audio, serial, music, wav",
     "authors":
